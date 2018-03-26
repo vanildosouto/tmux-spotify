@@ -18,6 +18,15 @@ fi
 
 artist_size=${#artist}
 title_size=${#title}
+prefix=""
+
+if [ $status = "Playing" ]; then
+    prefix=""
+else
+    if [ $status = "Paused" ]; then
+        prefix=""
+    fi
+fi
 
 if [ $artist_size -ge 20 ]; then
     artist="${artist:0:17}...";
@@ -27,6 +36,6 @@ if [ $title_size -ge 20 ]; then
     title="${title:0:17}...";
 fi
 
-status="${artist} - $title"
+status="${prefix} ${artist} - $title"
 
 echo "♫ $status"
